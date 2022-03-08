@@ -362,3 +362,19 @@ Browse to the deployed application in your web browser at the URL `https://<app-
 &nbsp;
 
 If you encounter any issues or have any feedback about [mssql-django](https://github.com/microsoft/mssql-django), head over to our mssql-django project repository and submit an issue.
+
+
+## docker settings
+docker compose is using mysql , make sure to match docker settings and settings.py have same configuration for DB.
+
+
+
+To create super user for django after running services in container.
+```
+docker-compose run web python manage.py createsuperuser
+```
+
+For django migrations run in start.
+```
+docker-compose run web python manage.py migrate
+```
