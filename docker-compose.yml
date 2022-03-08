@@ -6,10 +6,10 @@ services:
     ports:
       - '3306:3306'
     environment:
-       MYSQL_DATABASE: 'menuvoting'
-       MYSQL_USER: 'root'
-       MYSQL_PASSWORD: 'vn,tk9$y*8a!c)<{'
-       MYSQL_ROOT_PASSWORD: 'vn,tk9$y*8a!c)<{'
+       MYSQL_DATABASE: 'my-app-db'
+       MYSQL_USER: 'sajjad'
+       MYSQL_PASSWORD: 'sajjad'
+       MYSQL_ROOT_PASSWORD: 'sajjad'
   web:
     build: .
     command: python manage.py runserver 0.0.0.0:8000
@@ -19,3 +19,5 @@ services:
       - "8000:8000"
     depends_on:
       - db
+    expose:
+      - "8000"

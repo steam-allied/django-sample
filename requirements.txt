@@ -3,9 +3,11 @@ django_rest_knox
 djangorestframework
 knox
 python-dotenv
-mssql-django
-pyodbc
 django-cors-headers
+#psycopg2
+# mssql-django
+# pyodbc
 mysqlclient
 django-mysql
+
 

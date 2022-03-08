@@ -121,14 +121,21 @@ DATABASES = {
     #To connect Azure SQL DB using MSI (Managed Service Identity)
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'HOST': 'localhost',
-        'NAME': 'menuvoting',
-        'PORT': '3306',
-        'USER': 'root',
-        'PASSWORD': 'Y5<`r53L8W;}mw\8',
-        'Trusted_Connection': 'no',
-        
+        'NAME': 'my-app-db',
+        'USER': 'sajjad',
+        'PASSWORD': 'sajjad',
+        'HOST': 'db',
+        'PORT': 3306,
     }
+
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.postgresql',
+    #     'NAME': os.environ.get('POSTGRES_NAME'),
+    #     'USER': os.environ.get('POSTGRES_USER'),
+    #     'PASSWORD': os.environ.get('POSTGRES_PASSWORD'),
+    #     'HOST': 'db',
+    #     'PORT': 5432, 
+    # }
 }
 
 # Password validation
