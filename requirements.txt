@@ -1,0 +1,11 @@
+Django
+django_rest_knox
+djangorestframework
+knox
+python-dotenv
+mssql-django
+pyodbc
+django-cors-headers
+mysqlclient
+django-mysql
+
