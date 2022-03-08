@@ -119,12 +119,21 @@ DATABASES = {
     # }
 
     #To connect Azure SQL DB using MSI (Managed Service Identity)
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.mysql',
+    #     'NAME': 'my-app-db',
+    #     'USER': 'sajjad',
+    #     'PASSWORD': 'sajjad',
+    #     'HOST': 'db',
+    #     'PORT': 3306,
+    # }
+
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'my-app-db',
-        'USER': 'sajjad',
-        'PASSWORD': 'sajjad',
-        'HOST': 'db',
+        'NAME': 'menuvoting',
+        'USER': 'root',
+        'PASSWORD': 'Y5<`r53L8W;}mw\8',
+        'HOST': 'localhost',
         'PORT': 3306,
     }
 

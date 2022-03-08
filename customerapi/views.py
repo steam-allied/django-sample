@@ -70,7 +70,10 @@ class RestaurantAPI(generics.GenericAPIView):
     queryset = Restaurant.objects.all()
     serializer_class = RestaurantSerializer
     def post(self, request, *args, **kwargs):
-        serializer = self.get_serializer(data=request.data)
+        userid = request.user.id
+        data = request.data
+        data['userId'] = userid
+        serializer = self.get_serializer(data=data)
         serializer.is_valid(raise_exception=True)
         restaurant = serializer.save()
         return Response(RestaurantSerializer(restaurant).data)
@@ -101,16 +104,20 @@ class VoteAPI(generics.GenericAPIView):
         
         if request.accepted_media_type == 'application/json;version=1.0':
             # delete user votes for today
-            Vote.objects.filter(voteMenuDate=datetime.today().strftime('%Y-%m-%d') , userId=request.data['userId']).delete()
-            serializer = self.get_serializer(data=request.data)
+            Vote.objects.filter(voteMenuDate=datetime.today().strftime('%Y-%m-%d') , userId=request.user.id).delete()
+            data = request.data
+            data['userId'] = request.user.id
+            serializer = self.get_serializer(data=data)
             serializer.is_valid(raise_exception=True)
             menu = serializer.save()
             return Response(VoteSerializer(menu).data)
         elif request.accepted_media_type == 'application/json;version=1.1':
             for vote in request.data:
                 # delete user votes for today
-                Vote.objects.filter(voteMenuDate=datetime.today().strftime('%Y-%m-%d') , userId=vote['userId']).delete()
-                serializer = self.get_serializer(data=vote)
+                Vote.objects.filter(voteMenuDate=datetime.today().strftime('%Y-%m-%d') , userId=request.user.id).delete()
+                data = vote
+                data['userId'] = request.user.id
+                serializer = self.get_serializer(data=data)
                 serializer.is_valid(raise_exception=True)
                 menu = serializer.save()
             return Response({'message': 'Votes added based on version passed in header'})
