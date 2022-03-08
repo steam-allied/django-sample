@@ -2,37 +2,33 @@
 page_type: sample
 languages:
 - python
-- sql
+- mysql
 products:
 - vs-code
-- azure-sql-database
+- mysql
 
-description: "Creating REST API with Python, Django and Azure SQL"
-urlFragment: "azure-sql-db-django"
+description: "Creating REST API with Python, Django and MySQL hosted in docker"
+urlFragment: "django-sample"
 ---
 
-# Creating REST API with Python, Django and Azure SQL
+# Creating REST API with Python, Django and MySQL
 
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](https://github.com/azure-samples/azure-sql-db-django/blob/main/LICENSE)
 
 The sample uses the [Django](https://www.djangoproject.com/) web framework and [Django Rest framework](https://www.django-rest-framework.org/) package to easily implement REST APIs. [mssql-django](https://github.com/microsoft/mssql-django) v1.1 used to establish database connectivity with Azure SQL.
 
-> [!NOTE]
-> [mssql-django](https://github.com/microsoft/mssql-django) is a fork of [django-mssql-backend](https://pypi.org/project/django-mssql-backend/). This driver provides an enterprise database connectivity option for the Django Web Framework, with support for Microsoft SQL Server and Azure SQL Database.
-> [mssql-django](https://github.com/microsoft/mssql-django) supports Django 2.2, 3.0, 3.1, 3.2 and 4.0.
-
-## Download the sample code
+## How to run this sample
 
 Clone this repository:
 
 ```bash
-git clone https://github.com/azure-samples/azure-sql-db-django
+git clone https://github.com/steam-allied/django-sample
 ```
 
 Alternatively you can clone the code using Visual Studio Code as well.
 
 - Open the folder location where you want to clone the code
-- In Visual Studio Code, select Source Control > ... > Clone (or select View, Command Palette and enter Git:Clone), paste the [Git repository URL](https://github.com/azure-samples/azure-sql-db-django.git), and then select Enter</>.
+- In Visual Studio Code, select Source Control > ... > Clone (or select View, Command Palette and enter Git:Clone), paste the [Git repository URL](https://github.com/steam-allied/django-sample.git), and then select Enter</>.
 
 Once you have the code downloaded to your local computer. You should see folder structure as below:
 
@@ -60,7 +56,7 @@ azure-sql-db-django
  ┗ requirements.txt
 ```
 
-## Create Azure SQL Database
+## Create MySQL Database
 
 If you don't have an Azure SQL server already, you can create one (no additional costs for a server) by running the following [AZ CLI](https://docs.microsoft.com/en-us/cli/azure/) command (via [WSL](https://docs.microsoft.com/en-us/windows/wsl/), or Linux or [Azure Cloud Shell](https://azure.microsoft.com/en-us/features/cloud-shell/)):
 
