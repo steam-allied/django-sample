@@ -141,5 +141,5 @@ class ResultAPI(generics.GenericAPIView):
     def get(self, request, *args, **kwargs):
         # todayRecords = Vote.objects.filter(voteMenuDate=datetime.today().strftime('%Y-%m-%d'))
         todayRecords = Vote.objects.filter(voteMenuDate=datetime.today().strftime('%Y-%m-%d'))
-        ress = todayRecords.values('voteMenuId').annotate(vote_count=Count('voteMenuId') ).order_by('-vote_count')[:3]
+        ress = todayRecords.values('voteMenuId').annotate(vote_count=Count('voteMenuId') ).order_by('-vote_count')[:1]
         return Response(ress)
