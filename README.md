@@ -86,3 +86,11 @@ Login using the super user you created above
 
 # docker settings
 docker compose is using mysql , make sure to match docker settings and settings.py have same configuration for DB.
+
+# create groups
+create two groups exactly with the name of 'employee' and 'restaurant', these groups will be used for object level permission management for users. Assign permission to groups. 
+Employees can view menus, restaurant CRUD on votes.
+Restaurants can CRUD on restaurants and menus. 
+
+# Postman Testing 
+For postman collection, post/create menu and votes with current date in order to view results in api/vote/results endpoint.
