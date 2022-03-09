@@ -6,7 +6,7 @@ from django.db import migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('customerapi', '0007_vote_userid'),
+        ('votingapi', '0007_vote_userid'),
     ]
 
     operations = [

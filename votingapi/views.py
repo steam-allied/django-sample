@@ -4,8 +4,8 @@ from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
 from rest_framework.parsers import JSONParser
 from django.http.response import JsonResponse
-from customerapi.models import Restaurant, Menu, Vote
-from customerapi.serializers import RestaurantSerializer, MenuSerializer, VoteSerializer, UserSerializer, RegisterSerializer
+from votingapi.models import Restaurant, Menu, Vote
+from votingapi.serializers import RestaurantSerializer, MenuSerializer, VoteSerializer, UserSerializer, RegisterSerializer
 from rest_framework.decorators import api_view, permission_classes
 
 from rest_framework import generics, permissions

@@ -34,7 +34,7 @@ Once you have the code downloaded to your local computer. You should see folder 
 
 ```properties
 azure-sql-db-django
- ┣ customerapi
+ ┣ votingapi
  ┃ ┣ migrations
  ┃ ┣ admin.py
  ┃ ┣ apps.py
@@ -230,9 +230,9 @@ Please note that for this sample we decided to avoid to have secrets in the `set
 Run the migrations command to propagate changes you made to your models (creating a class, adding a field, deleting a model, etc.) into your database schema.
 
 ```python
-python manage.py makemigrations customerapi
+python manage.py makemigrations votingapi
 
-python manage.py migrate customerapi
+python manage.py migrate votingapi
 ```
 
 Once migration is done successfully, you'll see that database objects are created in your database. You can connect to your database and verify. Quickstart available here: [Quickstart: Use Azure Data Studio to connect and query Azure SQL database](https://docs.microsoft.com/en-us/sql/azure-data-studio/quickstart-sql-database?view=sql-server-ver15)
@@ -269,7 +269,7 @@ Quit the server with CTRL-BREAK.
 Using a REST Client (like [Insomnia](https://insomnia.rest/), [Postman](https://www.postman.com/), or curl), you can now call your API, for example:
 
 ```bash
-curl -X GET http://127.0.0.1:8000/customerapi/customer/
+curl -X GET http://127.0.0.1:8000/votingapi/customer/
 ```
 
 And you’ll get a response something like (based on available data in tables):
@@ -353,7 +353,7 @@ az webapp config appsettings set --settings DB_SERVER="<azure-sql-server-name>.d
 
 The Python Django sample code is running a Linux container in App Service using a built-in image.
 
-Browse to the deployed application in your web browser at the URL `https://<app-name>.azurewebsites.net/admin` or make a call to the API `https://<app-name>.azurewebsites.net/customerapi/customer/` using any other REST clients (like [Insomnia](https://insomnia.rest/), [Postman](https://www.postman.com/), or curl).
+Browse to the deployed application in your web browser at the URL `https://<app-name>.azurewebsites.net/admin` or make a call to the API `https://<app-name>.azurewebsites.net/votingapi/customer/` using any other REST clients (like [Insomnia](https://insomnia.rest/), [Postman](https://www.postman.com/), or curl).
 
 **Congratulations!** You're running a Python Django app in Azure App Service for Linux, with Azure SQL database.
 

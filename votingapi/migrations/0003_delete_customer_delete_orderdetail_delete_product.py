@@ -6,7 +6,7 @@ from django.db import migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('customerapi', '0002_menu_restaurant_vote'),
+        ('votingapi', '0002_menu_restaurant_vote'),
     ]
 
     operations = [

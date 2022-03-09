@@ -6,7 +6,7 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('customerapi', '0006_remove_menu_menuid_menu_restaurantid'),
+        ('votingapi', '0006_remove_menu_menuid_menu_restaurantid'),
     ]
 
     operations = [

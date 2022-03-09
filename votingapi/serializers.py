@@ -1,7 +1,7 @@
 #Serializer for converting complex objects into native Python datatypes and deserialize parsed data back into complex types
 
 from rest_framework import serializers
-from customerapi.models import Restaurant,Menu,Vote
+from votingapi.models import Restaurant,Menu,Vote
 from django.contrib.auth.models import User, Group
 class RestaurantSerializer(serializers.ModelSerializer):
     class Meta:
