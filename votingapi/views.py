@@ -121,6 +121,8 @@ class VoteAPI(generics.GenericAPIView):
                 serializer.is_valid(raise_exception=True)
                 menu = serializer.save()
             return Response({'message': 'Votes added based on version passed in header'})
+        # else:
+        #     return Response({'message': 'no version is provided in header '})
 
         
     def get(self, request, *args, **kwargs):
