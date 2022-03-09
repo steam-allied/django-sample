@@ -2,7 +2,9 @@
 from bdb import set_trace
 from email import header
 from http import client
+from importlib.resources import path
 import json
+from wsgiref import headers
 from click import password_option
 from rest_framework.authtoken.models import Token
 from rest_framework.test import APIClient, APITestCase
@@ -57,11 +59,11 @@ class EmployeeUser(APITestCase):
         self.token = self.responseJSON['token']
 
         self.client1 = APIClient()
-        self.client1.credentials(HTTP_AUTHORIZATION='Token ' + self.token)
-        #self.client1.header(HTTP_ACCEPT='application/json;version=1.0')
-
+        self.client1.credentials(HTTP_AUTHORIZATION='Token ' + self.token , HTTP_ACCEPT='application/json;version=1.0')
+        
+        #headers={'Accept': 'application/json;version=1.0' }
         self.vote_response = self.client1.post(
-            '/api/vote/', {'voteMenuId': 29, 'voteMenuDate': '2019-10-10'})
+            '/api/vote/', {'voteMenuId': 29, 'voteMenuDate': '2019-10-10'} , format='json')
         print('setup **********************************************************')
         print(self.vote_response)
         self.responseJSON_vote = json.loads(
