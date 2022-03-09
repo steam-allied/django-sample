@@ -22,9 +22,9 @@ services:
     restart: always
     environment:
       MYSQL_DATABASE: 'menuvoting'
-      MYSQL_USER: 'sajjad'
-      MYSQL_PASSWORD: 'sajjad'
-      MYSQL_ROOT_PASSWORD: 'sajjad'
+      MYSQL_USER: 'test'
+      MYSQL_PASSWORD: 'test'
+      MYSQL_ROOT_PASSWORD: 'root'
     ports:
       - '3306:3306'
     volumes:
