@@ -77,6 +77,8 @@ execute migrate command
 ```python manage.py migrate```
 create django superuser. (Note: This is the user which will have admin access on your django admin shell)
 ```python manage.py createsuperuser```
+# Perform Unit Testing  
+``` python manage.py test ```
 
 ## Start Django Admin Shell
 On your host browser, browse http://localhost:8000/admin/ to connect to web instance
@@ -94,3 +96,4 @@ Restaurants can CRUD on restaurants and menus.
 
 # Postman Testing 
 For postman collection, post/create menu and votes with current date in order to view results in api/vote/results endpoint.
+
