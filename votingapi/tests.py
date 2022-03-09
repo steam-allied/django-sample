@@ -17,11 +17,9 @@ class RegisterTestCase(APITestCase):
         self.user = User.objects.create_user('testuser', 'email@gmail', 'testpassword')
         self.user.save()
         self.myuser = User.objects.get(username='testuser')
-        print(APIClient().force_authenticate(user=self.user))
-        print(self.myuser)
-    def test_get_token(self):
-        print(self.user.username)
+    def test_get_username(self):
         self.assertEquals(self.user.username, 'testuser')
+        print('test_get_username completed successfully')
 
 # add group employee and add a user to the group -- user and group create successfully with assigned permissions
 # login has token and user info
@@ -39,21 +37,28 @@ class AddEmployeeUser(APITestCase):
         g.user_set.add(self.user)
         self.user.save()
         self.client = APIClient()
+        # login setup 
         self.response = self.client.post('/api/login/', {'username': 'testuser', 'password': 'testpassword'})
         self.responseJSON = json.loads(self.response.content)
         self.token = self.responseJSON['token']
+    
     def test_api_test_register(self):
         self.assertEqual(self.user.groups.all()[0].name, 'employee')
         self.assertEqual(self.user.username, 'testuser')
+        print('register test completed ...')
+    
     def test_login_employee(self):
         self.assertEqual(self.response.status_code, 200)
         self.assertEqual(self.response.data['username'], 'testuser') # check if user is logged in
         self.assertEqual(self.response.data['type'], 'employee') # check if user is employee    
         self.assertIsNotNone(self.responseJSON['token']) #token has been created
         self.assertEqual(self.responseJSON['token'], self.token) # token response is same as token in login
+        print('login test completed ...')
+        print('login test returning user completed successfully...')
+        print('login test returning token completed successfully...')
+        print('login test returning status code successfully...')
 
-
-        
+    
 
 
         
