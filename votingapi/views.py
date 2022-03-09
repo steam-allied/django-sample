@@ -87,6 +87,8 @@ class MenuAPI(generics.GenericAPIView):
     queryset = Menu.objects.all()
     serializer_class = MenuSerializer
     def post(self, request, *args, **kwargs):
+        # delete menu votes for today
+        Menu.objects.filter(menuDate=datetime.today().strftime('%Y-%m-%d') , restaurantId=request.data['restaurantId']).delete()
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         menu = serializer.save()
@@ -107,16 +109,20 @@ class VoteAPI(generics.GenericAPIView):
             Vote.objects.filter(voteMenuDate=datetime.today().strftime('%Y-%m-%d') , userId=request.user.id).delete()
             data = request.data
             data['userId'] = request.user.id
+            data['rate'] = 1
             serializer = self.get_serializer(data=data)
             serializer.is_valid(raise_exception=True)
             menu = serializer.save()
             return Response(VoteSerializer(menu).data)
         elif request.accepted_media_type == 'application/json;version=1.1':
+            count = 1
             for vote in request.data:
                 # delete user votes for today
                 Vote.objects.filter(voteMenuDate=datetime.today().strftime('%Y-%m-%d') , userId=request.user.id).delete()
                 data = vote
                 data['userId'] = request.user.id
+                data['rate'] = count
+                count = count + 1
                 serializer = self.get_serializer(data=data)
                 serializer.is_valid(raise_exception=True)
                 menu = serializer.save()

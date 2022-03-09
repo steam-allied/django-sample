@@ -31,6 +31,7 @@ class Vote(models.Model):
     voteMenuId = models.IntegerField(blank=False)
     userId = models.IntegerField(blank=False)
     voteMenuDate = models.DateField()
+    rate = models.IntegerField(blank=False)
 
     def __str__(self):
         return f"Vote #{self.voteId}"

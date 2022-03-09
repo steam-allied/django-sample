@@ -17,7 +17,7 @@ class MenuSerializer(serializers.ModelSerializer):
 class VoteSerializer(serializers.ModelSerializer):
     class Meta:
         model=Vote
-        fields=('voteId','voteMenuId','userId','voteMenuDate')
+        fields=('voteId','voteMenuId','userId','voteMenuDate' , 'rate')
 
 class GroupSerializer(serializers.ModelSerializer):    
     class Meta:
