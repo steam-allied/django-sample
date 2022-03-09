@@ -1,19 +1,7 @@
 
-from bdb import set_trace
-from email import header
-from http import client
-from importlib.resources import path
 import json
-from wsgiref import headers
-from click import password_option
-from rest_framework.authtoken.models import Token
+from django.contrib.auth.models import Group, Permission, User
 from rest_framework.test import APIClient, APITestCase
-#from rest_framework.test import force_authenticate
-from django.contrib.auth.models import User, Group
-from .serializers import RegisterSerializer, UserSerializer, GroupSerializer
-from django.contrib.auth.models import Group, Permission
-from django.contrib.contenttypes.models import ContentType
-from django.contrib.auth import login
 
 # default regiser test case -- register a new user without group
 
