@@ -92,7 +92,7 @@ class EmployeeUser(APITestCase):
     def test_create_vote(self):
         # create vote
         self.assertEqual(self.vote_response.status_code, 200)
-        print('create vote test completed successfully...')
+        print('create vote test with version header api 1.0 completed successfully...')
 
 
 class RestaurantUser(APITestCase):
@@ -175,3 +175,4 @@ class RestaurantUser(APITestCase):
     def test_get_restaurant_list(self):
         self.assertEqual(self.response_restaurant_list.status_code, 200)
         self.assertEqual(len(self.response_restaurant_list.data), 1)
+        print('get restaurant list test completed successfully...')
