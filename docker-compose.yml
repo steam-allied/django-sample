@@ -1,23 +1,43 @@
-version: '3'
+version: '3.8'
 
 services:
-  db:
-    image: mysql:5.7
-    ports:
-      - '3306:3306'
-    environment:
-       MYSQL_DATABASE: 'my-app-db'
-       MYSQL_USER: 'sajjad'
-       MYSQL_PASSWORD: 'sajjad'
-       MYSQL_ROOT_PASSWORD: 'sajjad'
+  
   web:
-    build: .
-    command: python manage.py runserver 0.0.0.0:8000
-    volumes:
-      - .:/my_app_dir
-    ports:
-      - "8000:8000"
+    container_name: web
+    build:
+      dockerfile: ./Dockerfile
+    entrypoint: ["./wait.sh"] # wait for the db service to start before this service is initialized
     depends_on:
       - db
-    expose:
-      - "8000"
+    ports:
+      - "8000:8000"
+    networks:
+      - internal
+  
+  db:
+    container_name: db
+    image: mysql:8.0
+    cap_add:
+      - SYS_NICE
+    restart: always
+    environment:
+      MYSQL_DATABASE: 'menuvoting'
+      MYSQL_USER: 'sajjad'
+      MYSQL_PASSWORD: 'sajjad'
+      MYSQL_ROOT_PASSWORD: 'sajjad'
+    ports:
+      - '3306:3306'
+    volumes:
+      - "db:/var/lib/mysql"
+      - "./db/init.sql:/docker-entrypoint-initdb.d/init.sql" #initialize the menuvoting db if not exists
+    networks:
+      - internal
+
+volumes:
+  db:
+    driver: local
+
+networks: #by default the network exists but we are still giving it a custom name
+  internal:
+    name: network-internal
+    driver: bridge

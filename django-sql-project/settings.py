@@ -56,16 +56,11 @@ INSTALLED_APPS = [
 ]
 
 REST_FRAMEWORK = {
-    #'TEST_REQUEST_DEFAULT_FORMAT': 'json',
+    
     'DEFAULT_AUTHENTICATION_CLASSES': [
-        #'rest_framework.authentication.BasicAuthentication',
-        #'rest_framework.authentication.SessionAuthentication',
-        #'rest_framework.authentication.TokenAuthentication',
         'knox.auth.TokenAuthentication',
     ],
-    "DEFAULT_PERMISSION_CLASSES": [
-        #'rest_framework.permissions.IsAuthenticated',
-        #'rest_framework.permissions.DjangoModelPermissions',
+    "DEFAULT_PERMISSION_CLASSES": [        
     ],
 }
 
@@ -109,45 +104,16 @@ WSGI_APPLICATION = 'django-sql-project.wsgi.application'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
 DATABASES = {
-    # 'default': {
-    #     'ENGINE': 'mssql',
-    #     'NAME': os.getenv("DB_NAME"),
-    #     'HOST': os.getenv("DB_SERVER"),
-    #     'PORT': '1433',
-    #     'USER': os.getenv("DB_USER"),
-    #     'PASSWORD': os.getenv("DB_PASSWORD"),
-    #     'OPTIONS': {
-    #         'driver': 'ODBC Driver 17 for SQL Server',
-    #     },
-    # }
-
-    #To connect Azure SQL DB using MSI (Managed Service Identity)
-    # 'default': {
-    #     'ENGINE': 'django.db.backends.mysql',
-    #     'NAME': 'my-app-db',
-    #     'USER': 'sajjad',
-    #     'PASSWORD': 'sajjad',
-    #     'HOST': 'db',
-    #     'PORT': 3306,
-    # }
-
+    
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'menuvoting',
-        'USER': 'root',
-        'PASSWORD': 'Y5<`r53L8W;}mw\8',
-        'HOST': 'localhost',
+        'USER': 'sajjad',
+        'PASSWORD': 'sajjad',
+        'HOST': 'db',
         'PORT': 3306,
     }
 
-    # 'default': {
-    #     'ENGINE': 'django.db.backends.postgresql',
-    #     'NAME': os.environ.get('POSTGRES_NAME'),
-    #     'USER': os.environ.get('POSTGRES_USER'),
-    #     'PASSWORD': os.environ.get('POSTGRES_PASSWORD'),
-    #     'HOST': 'db',
-    #     'PORT': 5432, 
-    # }
 }
 
 # Password validation
@@ -203,5 +169,3 @@ REST_KNOX = {
   'AUTO_REFRESH': False,
   'EXPIRY_DATETIME_FORMAT': api_settings.DATETIME_FORMAT
 }
-
-
