@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class customerapiConfig(AppConfig):
+class votingapiConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'customerapi'
+    name = 'votingapi'

@@ -17,14 +17,14 @@ from django.contrib import admin
 from django.conf import settings
 from django.conf.urls.static import static
 from django.urls import include, path
-from customerapi.views import LoginAPI, RegisterAPI, LogoutAPI#URl patterns
+from votingapi.views import LoginAPI, RegisterAPI, LogoutAPI#URl patterns
 
 from knox import views as knox_views
 from django.urls import path
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/', include('customerapi.urls')),
+    path('api/', include('votingapi.urls')),
     
     path('api/register/', RegisterAPI.as_view(), name='register'),
     path('api/login/', LoginAPI.as_view(), name='login'),
