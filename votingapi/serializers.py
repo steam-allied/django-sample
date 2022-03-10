@@ -3,6 +3,7 @@
 from rest_framework import serializers
 from votingapi.models import Restaurant,Menu,Vote
 from django.contrib.auth.models import User, Group
+from django.contrib.auth.password_validation import validate_password
 class RestaurantSerializer(serializers.ModelSerializer):
     class Meta:
         model=Restaurant
@@ -41,9 +42,14 @@ class RegisterSerializer(serializers.ModelSerializer):
 
     def create(self, validated_data):
         user_type = self.context['request'].data.get('type')
+        user_password = self.context['request'].data.get('password')
+        try:
+            validate_password(user_password)
+        except:
+            raise serializers.ValidationError("Password is not valid")
+        
         user = User.objects.create_user(validated_data['username'], validated_data['email'], validated_data['password'])
         g = Group.objects.get(name=user_type)
         g.user_set.add(user)
         return user
-
 
